@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{ userProfile?.displayName?.split(" ")[0] }} Menu</ion-title>
+      
+      <ion-buttons end>
+        <button ion-button color="danger" (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+    <ion-content>
+     
+      <button ion-button full color="light" (click)="goToList()">
+          Aktivity
+      </button>
+      <button ion-button full color="light" (click)="goToMyActivity()">
+          Moje Aktivity
+      </button>
+      <button ion-button full color="light" (click)="goToOption()">
+          Nastavení
+      </button>
+      <button ion-button full color="light" (click)="goToGraph()">
+          Grafy
+      </button>
+      
+  
+    </ion-content>
+  

@@ -6,22 +6,25 @@ import { DataService } from '../core/data.service';
 import { AuthService } from '../core/auth.service';
 import { UserModel } from '../core/user.model';
 import { ActivitiesModel } from '../core/activities.model';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-myActivity',
+  templateUrl: 'myActivity.html', 
+  
+  
+  
+  
 })
-export class ListPage {
+export class MyActivityPage {
 
   public userProfile: UserModel;
   public uid: string = "";
   public title;
   public description;
   public activities: ActivitiesModel[];
-  /*public activitiesselected = {}*/
 
   constructor(
     public navCtrl: NavController, 
@@ -29,10 +32,8 @@ export class ListPage {
     public afs: AngularFirestore,
     public db: DataService
   ) {
-    this.db.bindCollection<ActivitiesModel>("activities", this, "activities");
-    
+    this.db.bindCollection<ActivitiesModel>("activities", this, "myActivities", ref => ref.where ("uid", "==", ""));
   }
-
 
   ionViewDidLoad() {
     this.authService.getFullProfile().subscribe((user: UserModel) => {
@@ -41,22 +42,13 @@ export class ListPage {
         this.uid = user.uid;
     });
   }
-
   
+
 
   logout() {
     this.authService.signOut().then(() => this.navCtrl.setRoot('AuthPage'));
   }
-  
 
-  addActivity() {
-    this.db.add<ActivitiesModel>("activities",{title: this.title, description: this.description});
-  }
-
-  goToMyActivity() {
-    this.navCtrl.push("MyActivityPage");
-
-  }
   
 
   /*delete(index) {

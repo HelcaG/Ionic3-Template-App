@@ -1,13 +1,37 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{ userProfile?.displayName?.split(" ")[0] }} ToDo</ion-title>
-    <ion-buttons end>
-      <button ion-button color="danger" (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-<ion-content>
-  Hello Universe!
-</ion-content>
+    <ion-navbar>
+      <ion-title>{{ userProfile?.displayName?.split(" ")[0] }} Aktivity</ion-title>
+      
+      <ion-buttons end>
+        <button ion-button color="danger" (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    
+      <ion-card *ngFor="let activity of activities; let i = index">
+        <ion-card-header>
+          {{activity.title}}
+          <ion-checkbox [(ngModel)]="activitySelected[activity.id]"></ion-checkbox>
+          
+        </ion-card-header>
+        <ion-card-content>
+          {{activity.description}}
+        </ion-card-content>
+        
+      </ion-card>
+      
+  
+      
+    
+    <ion-list>
+        
+          
+    </ion-list>
+  
+    <input type="text" [(ngModel)]="title" placeholder="Activity title">
+    <input type="text" [(ngModel)]="description" placeholder="Activity description">
+    <button ion-button round color="light" (click)="addActivity()">Add</button>
+  </ion-content>

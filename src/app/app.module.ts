@@ -8,9 +8,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 //Local plugins
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -30,7 +29,7 @@ export function HttpLoaderFactory(http: Http) {
     CoreModule,
     IonicModule.forRoot(AppComponent),
     AngularFireModule.initializeApp(Config.firebase),
-    AngularFireDatabaseModule, 
+    AngularFirestoreModule,
     AngularFireAuthModule,
     TranslateModule.forRoot({
             loader: {

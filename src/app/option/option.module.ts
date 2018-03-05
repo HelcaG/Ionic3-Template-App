@@ -3,19 +3,19 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { SharedModule } from '../shared/shared.module';
-import { ListPage } from './list';
+import { OptionPage } from './option';
 import { DataService } from '../core/data.service'
 
 @NgModule({
   imports: [
     SharedModule,
-    IonicPageModule.forChild(ListPage)
+    IonicPageModule.forChild(OptionPage)
   ],
   declarations: [
-    ListPage
+    OptionPage
   ],
   entryComponents: [
-    ListPage
+    OptionPage
   ]
 })
-export class ListPageModule { }
+export class OptionPageModule { }
